@@ -38,7 +38,9 @@ namespace Shop.Controllers.v1
 
             try
             {
-                user.Role = "employee";
+                if (user.Username.ToLower() != "admin")
+                    user.Role = "employee";
+                    
                 context.Users.Add(user);
                 await context.SaveChangesAsync();
 
